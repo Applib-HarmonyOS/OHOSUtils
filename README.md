@@ -1,87 +1,71 @@
-AndroidUtils is a collection of util classes that I use in almost every project - I might as well give them their own module. This is more for personal use (I don't expect most people to use this as a dependency in their own projects, other than stealing a snippet or two), but feel free to add your own contributions as you wish.
+# HMOSUtils
 
-[![](https://jitpack.io/v/me.jfenn/AndroidUtils.svg)](https://jitpack.io/#me.jfenn/AndroidUtils)
+A HMOS Utils library is collection of utils classes.
+
+## Source
+Inspired by [fennifith/AndroidUtils](https://github.com/fennifith/AndroidUtils) - version 0.0.1
+
+## Feature
+This library provides the collection of utils classes.
+
+<img src="https://github.com/applibgroup/Instalike/blob/master/screenshots/instalikeview.gif" width="256">
+
+## Dependency
+1. For using HMOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+```groovy
+	dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+        testImplementation 'junit:junit:4.13'
+        ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
+        implementation project('hmosutils')
+    }
+```
+2. For using HMOSUtils in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+```groovy
+	dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        testImplementation 'junit:junit:4.13'
+    }
+```
 
 ## Usage
 
-### Setup
+#### Include code in your layout:
 
-This project is published on [JitPack](https://jitpack.io), which you can add to your project by copying the following to your root build.gradle at the end of "repositories".
-
-```gradle
-allprojects {
-  repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-  }
-}
+```xml
+<Button
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:id="$+id:buttonimageutil"
+        ohos:below="$id:buttondimen"
+        ohos:right_of="$id:button"
+        ohos:top_margin="30vp"
+        ohos:top_padding="15vp"
+        ohos:bottom_padding="15vp"
+        ohos:left_padding="38vp"
+        ohos:right_padding="38vp"
+        ohos:left_margin="20vp"
+        ohos:text="Image Utils"
+        ohos:text_size="28vp"
+        ohos:text_color="#FFF8F4F4"
+        ohos:background_element="#FF03CACA"
+        />
 ```
 
-To add the dependency, copy this line into your app module's build.gradle file.
+## DimenUtils
 
-```gradle
-implementation 'me.jfenn:AndroidUtils:0.0.5'
-```
+includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
 
-### Methods
+1. dpToPx(Float) : Int
 
-#### ViewUtils
+2. spToPx(Float) : Int
 
-Various extension functions/delegates to safely reference view ids in activities, fragments, and other Android components.
+3. pxToDp(Int) : Float
 
-```kotlin
-val button: MaterialButton? = findView(R.id.button)
-val recyclerView: RecyclerView? by bind(R.id.recycler)
-```
+4. pxToSp(Int) : Float
 
-Also: `View.setBackgroundTint(color)` will wrap & tint a view's background drawable. 
 
-#### Prefs
+## Future Work
 
-A bunch of generic-typed preference utility functions.
-
-```kotlin
-// editing a SharedPreferences object (automatically runs .apply())
-sharedPrefs.edit {
-    putInt("themeKey", THEME_DARK)
-}
-
-// setter/getter operator functions
-val theme: Int = sharedPrefs["themeKey"]
-sharedPrefs["themeKey"] = THEME_LIGHT
-```
-
-Property delegates can be used to greatly simplify SharedPreferences operations.
-
-```kotlin
-// binding a single property
-val theme by sharedPrefs.get<Int>("themeKey", defaultValue = THEME_LIGHT)
-
-// uses the delegated property name ("themeKey") if a key is not provided
-val themeKey by sharedPrefs.get<Int>(defaultValue = THEME_LIGHT)
-```
-
-##### TypedPreference
-
-TypedPreference objects can be used to create a set of typed "pointers" to reference throughout your project, instead of relying on a hardcoded preference key/string.
-
-```kotlin
-// constructs a TypedPreference<Int> with the key "PREF_THEME"
-val PREF_THEME by pref<Int>(defaultValue = THEME_LIGHT)
-
-// in another file...
-var theme by sharedPrefs.get(PREF_THEME)
-
-// alternatively, in an activity/fragment/etc (if using PreferenceManager.getDefaultSharedPreferences)
-var theme by prefs(PREF_THEME)
-```
-
-#### DimenUtils
-
-Contains two `Context` extension functions: `getStatusBarHeight()` and `getNavigationBarHeight()`, that both work accordingly.
-
-Also includes some unit conversion functions that use `Resources.getSystem()` to find the display density:
-- `dpToPx(Float) : Int`
-- `spToPx(Float) : Int`
-- `pxToDp(Int) : Float`
-- `pxToSp(Int) : Float` 
+1. Seekbar is not implemented as some of the android mapping were not found 
+2. In DimenUtil, getStatusBarHeight and getNavigationBarHeight method are not implemented as some mapping were not found.
