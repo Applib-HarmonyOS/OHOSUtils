@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "me.jfenn.hmosutils",
+    "bundleName": "me.jfenn.ohosutils",
     "vendor": "jfenn",
     "version": {
       "code": 1000000,
@@ -9,9 +9,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "me.jfenn.hmosutils",
+    "package": "me.jfenn.ohosutils",
     "name": ".MyApplication",
-    "mainAbility": "me.jfenn.hmosutils.MainAbility",
+    "mainAbility": "me.jfenn.ohosutils.MainAbility",
     "deviceType": [
       "phone",
       "tablet",
@@ -36,7 +36,7 @@
           }
         ],
         "orientation": "unspecified",
-        "name": "me.jfenn.hmosutils.MainAbility",
+        "name": "me.jfenn.ohosutils.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",

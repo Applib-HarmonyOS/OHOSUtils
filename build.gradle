@@ -63,9 +63,8 @@ sonarqube {
         property "sonar.projectKey", "applibgroup_OHOSUtils"
         property "sonar.organization", "applibgroup"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.sources", "entry,hmosutils"
-        property "sonar.java.binaries", "entry/build,hmosutils/build"
+        property "sonar.sources", "entry,ohosutils"
+        property "sonar.java.binaries", "entry/build,ohosutils/build"
         property "sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/checkstyle.xml"
     }
 }
-

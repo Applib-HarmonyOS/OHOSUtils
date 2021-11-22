@@ -1,6 +1,6 @@
-# HMOSUtils
+# OHOSUtils
 
-A HMOS Utils library is collection of utils classes.
+A OHOSUtils library is collection of utils classes which is created for the dependencies used in SlideActionView library for implementation, but feel free to add your own contributions as you wish.
 
 ## Source
 Inspired by [fennifith/AndroidUtils](https://github.com/fennifith/AndroidUtils) - version 0.0.1
@@ -8,8 +8,7 @@ Inspired by [fennifith/AndroidUtils](https://github.com/fennifith/AndroidUtils) 
 ## Feature
 This library provides the collection of utils classes.
 
-<img src="https://github.com/applibgroup/Instalike/blob/master/screenshots/instalikeview.gif" width="256">
-
+![](screenshots/ohosutilsgif.gif)
 ## Dependency
 1. For using HMOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 ```groovy
@@ -17,10 +16,10 @@ This library provides the collection of utils classes.
         implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
         testImplementation 'junit:junit:4.13'
         ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
-        implementation project('hmosutils')
+        implementation project(':ohosutils')
     }
 ```
-2. For using HMOSUtils in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+2. For using OHOSUtils in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
 ```groovy
 	dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -67,5 +66,8 @@ includes some unit conversion functions that use getDeviceCapability() or getDef
 
 ## Future Work
 
-1. Seekbar is not implemented as some of the android mapping were not found 
-2. In DimenUtil, getStatusBarHeight and getNavigationBarHeight method are not implemented as some mapping were not found.
+1. Since there is no class in HarmonyOS similar to ClipDrawable and LayerDrawable, the SeekBarDrawable.java and SeekBarUtils.java are currently not implemented due to platform dependencies.
+
+2. In DimenUtil, since currently StatusBarHeight and NavigationBarHeight cannot be set in android resources as identifiers, getStatusBarHeight and getNavigationBarHeight method are currently not implemented due to platform dependencies.
+
+ 

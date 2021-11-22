@@ -1,0 +1,25 @@
+{
+  "app": {
+    "bundleName": "me.jfenn.ohosutils",
+    "vendor": "jfenn",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "me.jfenn.ohosutils",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "ohosutils",
+      "moduleType": "har"
+    }
+  }
+}
