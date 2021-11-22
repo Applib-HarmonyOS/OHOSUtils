@@ -10,7 +10,7 @@ This library provides the collection of utils classes.
 
 ![](screenshots/ohosutilsgif.gif)
 ## Dependency
-1. For using HMOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+1. For using OHOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 ```groovy
 	dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
