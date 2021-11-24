@@ -55,19 +55,36 @@ This library provides the collection of utils classes.
 
 includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
 
-1. dpToPx(Float) : Int
+1. dpToPx(Float) : A value of the provided dp units returns value in Pixel.
 
-2. spToPx(Float) : Int
+2. spToPx(Float) : A value of the provided Sp units returns value in Pixel.
 
-3. pxToDp(Int) : Float
+3. pxToDp(Int) : A value of the provided Pixel units returns value in Dp.
 
-4. pxToSp(Int) : Float
+4. pxToSp(Int) : A value of the provided Pixel units returns value in Sp.
 
+## ImageUtils
+
+includes method which converts the drawable to PixelMap.
+
+1. drawableToBitmap(Element) : Converts the input Element drawable to PixelMap.
+
+## ColorUtils
+
+includes some methods that calculate the darkness of color and determine opaque color which will be equivalent translucent color drawn on top of another color
+
+1. isColorDark(int) : Determine if a input color is dark or light. 
+
+2. getColorDarkness(int) : Calculates the darkness of a input color.
+
+3. withBackground(int, int) : Calculates an opaque color that is equivalent to a translucent color drawn on top of another color.
+
+4. getHsvColorWheelArr(float, float) : Determine the HSVColor of the color returning array.
 
 ## Future Work
 
 1. Since there is no class in HarmonyOS similar to ClipDrawable and LayerDrawable, the SeekBarDrawable.java and SeekBarUtils.java are currently not implemented due to platform dependencies.
 
-2. In DimenUtil, since currently StatusBarHeight and NavigationBarHeight cannot be set in android resources as identifiers, getStatusBarHeight and getNavigationBarHeight method are currently not implemented due to platform dependencies.
+2. In DimenUtil, since currently StatusBarHeight and NavigationBarHeight cannot be set as identifiers, getStatusBarHeight and getNavigationBarHeight method are currently not implemented due to platform dependencies.
 
  
