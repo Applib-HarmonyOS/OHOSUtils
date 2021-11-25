@@ -29,29 +29,7 @@ This library provides the collection of utils classes.
 
 ## Usage
 
-#### Include code in your layout:
-
-```xml
-<Button
-        ohos:height="match_content"
-        ohos:width="match_content"
-        ohos:id="$+id:buttonimageutil"
-        ohos:below="$id:buttondimen"
-        ohos:right_of="$id:button"
-        ohos:top_margin="30vp"
-        ohos:top_padding="15vp"
-        ohos:bottom_padding="15vp"
-        ohos:left_padding="38vp"
-        ohos:right_padding="38vp"
-        ohos:left_margin="20vp"
-        ohos:text="Image Utils"
-        ohos:text_size="28vp"
-        ohos:text_color="#FFF8F4F4"
-        ohos:background_element="#FF03CACA"
-        />
-```
-
-## DimenUtils
+#### DimenUtils
 
 includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
 
@@ -63,13 +41,13 @@ includes some unit conversion functions that use getDeviceCapability() or getDef
 
 4. pxToSp(Int) : A value of the provided Pixel units returns value in Sp.
 
-## ImageUtils
+#### ImageUtils
 
 includes method which converts the drawable to PixelMap.
 
 1. drawableToBitmap(Element) : Converts the input Element drawable to PixelMap.
 
-## ColorUtils
+####  ColorUtils
 
 includes some methods that calculate the darkness of color and determine opaque color which will be equivalent translucent color drawn on top of another color
 
