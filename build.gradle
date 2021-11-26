@@ -46,7 +46,7 @@ allprojects {
         showViolations = true
         configFile file("config/checkstyle.xml")
         source 'entry/src/main/java'
-        source 'instalike/src/main/java'
+        source 'ohosutils/src/main/java'
         include '**/*.java'
 
         // empty classpath
