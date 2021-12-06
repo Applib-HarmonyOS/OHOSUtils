@@ -26,6 +26,14 @@ This library provides the collection of utils classes.
         testImplementation 'junit:junit:4.13'
     }
 ```
+3. For using OHOSUtils from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+``` groovy
+dependencies {
+	    implementation 'dev.applibgroup:ohosutils:1.0.0'
+	    testCompile 'junit:junit:4.13'
+    }
+```
+
 
 ## Usage
 
