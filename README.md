@@ -1,3 +1,5 @@
+[![.github/workflows/main.yml](https://github.com/applibgroup/OHOSUtils/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/OHOSUtils/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_OHOSUtils&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=applibgroup_OHOSUtils)
 # OHOSUtils
 
 A OHOSUtils library is collection of utils classes which is created for the dependencies used in SlideActionView library for implementation, but feel free to add your own contributions as you wish.
