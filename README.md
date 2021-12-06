@@ -1,87 +1,68 @@
-AndroidUtils is a collection of util classes that I use in almost every project - I might as well give them their own module. This is more for personal use (I don't expect most people to use this as a dependency in their own projects, other than stealing a snippet or two), but feel free to add your own contributions as you wish.
+# OHOSUtils
 
-[![](https://jitpack.io/v/me.jfenn/AndroidUtils.svg)](https://jitpack.io/#me.jfenn/AndroidUtils)
+A OHOSUtils library is collection of utils classes which is created for the dependencies used in SlideActionView library for implementation, but feel free to add your own contributions as you wish.
+
+## Source
+Inspired by [fennifith/AndroidUtils](https://github.com/fennifith/AndroidUtils) - version 0.0.1
+
+## Feature
+This library provides the collection of utils classes.
+
+![](screenshots/ohosutilsgif.gif)
+## Dependency
+1. For using OHOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+```groovy
+	dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+        testImplementation 'junit:junit:4.13'
+        ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
+        implementation project(':ohosutils')
+    }
+```
+2. For using OHOSUtils in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+```groovy
+	dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        testImplementation 'junit:junit:4.13'
+    }
+```
 
 ## Usage
 
-### Setup
-
-This project is published on [JitPack](https://jitpack.io), which you can add to your project by copying the following to your root build.gradle at the end of "repositories".
-
-```gradle
-allprojects {
-  repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-  }
-}
-```
-
-To add the dependency, copy this line into your app module's build.gradle file.
-
-```gradle
-implementation 'me.jfenn:AndroidUtils:0.0.5'
-```
-
-### Methods
-
-#### ViewUtils
-
-Various extension functions/delegates to safely reference view ids in activities, fragments, and other Android components.
-
-```kotlin
-val button: MaterialButton? = findView(R.id.button)
-val recyclerView: RecyclerView? by bind(R.id.recycler)
-```
-
-Also: `View.setBackgroundTint(color)` will wrap & tint a view's background drawable. 
-
-#### Prefs
-
-A bunch of generic-typed preference utility functions.
-
-```kotlin
-// editing a SharedPreferences object (automatically runs .apply())
-sharedPrefs.edit {
-    putInt("themeKey", THEME_DARK)
-}
-
-// setter/getter operator functions
-val theme: Int = sharedPrefs["themeKey"]
-sharedPrefs["themeKey"] = THEME_LIGHT
-```
-
-Property delegates can be used to greatly simplify SharedPreferences operations.
-
-```kotlin
-// binding a single property
-val theme by sharedPrefs.get<Int>("themeKey", defaultValue = THEME_LIGHT)
-
-// uses the delegated property name ("themeKey") if a key is not provided
-val themeKey by sharedPrefs.get<Int>(defaultValue = THEME_LIGHT)
-```
-
-##### TypedPreference
-
-TypedPreference objects can be used to create a set of typed "pointers" to reference throughout your project, instead of relying on a hardcoded preference key/string.
-
-```kotlin
-// constructs a TypedPreference<Int> with the key "PREF_THEME"
-val PREF_THEME by pref<Int>(defaultValue = THEME_LIGHT)
-
-// in another file...
-var theme by sharedPrefs.get(PREF_THEME)
-
-// alternatively, in an activity/fragment/etc (if using PreferenceManager.getDefaultSharedPreferences)
-var theme by prefs(PREF_THEME)
-```
-
 #### DimenUtils
 
-Contains two `Context` extension functions: `getStatusBarHeight()` and `getNavigationBarHeight()`, that both work accordingly.
+includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
 
-Also includes some unit conversion functions that use `Resources.getSystem()` to find the display density:
-- `dpToPx(Float) : Int`
-- `spToPx(Float) : Int`
-- `pxToDp(Int) : Float`
-- `pxToSp(Int) : Float` 
+1. dpToPx(Float) : A value of the provided dp units returns value in Pixel.
+
+2. spToPx(Float) : A value of the provided Sp units returns value in Pixel.
+
+3. pxToDp(Int) : A value of the provided Pixel units returns value in Dp.
+
+4. pxToSp(Int) : A value of the provided Pixel units returns value in Sp.
+
+#### ImageUtils
+
+includes method which converts the drawable to PixelMap.
+
+1. drawableToBitmap(Element) : Converts the input Element drawable to PixelMap.
+
+####  ColorUtils
+
+includes some methods that calculate the darkness of color and determine opaque color which will be equivalent translucent color drawn on top of another color
+
+1. isColorDark(int) : Determine if a input color is dark or light. 
+
+2. getColorDarkness(int) : Calculates the darkness of a input color.
+
+3. withBackground(int, int) : Calculates an opaque color that is equivalent to a translucent color drawn on top of another color.
+
+4. getHsvColorWheelArr(float, float) : Determine the HSVColor of the color returning array.
+
+## Future Work
+
+1. Since there is no class in HarmonyOS similar to ClipDrawable and LayerDrawable, the SeekBarDrawable.java and SeekBarUtils.java are currently not implemented due to platform dependencies.
+
+2. In DimenUtil, since currently StatusBarHeight and NavigationBarHeight cannot be set as identifiers, getStatusBarHeight and getNavigationBarHeight method are currently not implemented due to platform dependencies.
+
+ 
