@@ -1,3 +1,5 @@
+[![.github/workflows/main.yml](https://github.com/applibgroup/OHOSUtils/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/OHOSUtils/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_OHOSUtils&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=applibgroup_OHOSUtils)
 # OHOSUtils
 
 A OHOSUtils library is collection of utils classes which is created for the dependencies used in SlideActionView library for implementation, but feel free to add your own contributions as you wish.
@@ -12,7 +14,7 @@ This library provides the collection of utils classes.
 ## Dependency
 1. For using OHOSUtil module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 ```groovy
-	dependencies {
+dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
         testImplementation 'junit:junit:4.13'
         ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
@@ -21,17 +23,25 @@ This library provides the collection of utils classes.
 ```
 2. For using OHOSUtils in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
 ```groovy
-	dependencies {
+dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         testImplementation 'junit:junit:4.13'
     }
 ```
+3. For using OHOSUtils from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+``` groovy
+dependencies {
+        implementation 'dev.applibgroup:ohosutils:1.0.0'
+        testCompile 'junit:junit:4.13'
+    }
+```
+
 
 ## Usage
 
 #### DimenUtils
 
-includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
+Includes some unit conversion functions that use getDeviceCapability() or getDefaultDisplay() to find the display density:
 
 1. dpToPx(Float) : A value of the provided dp units returns value in Pixel.
 
@@ -43,13 +53,13 @@ includes some unit conversion functions that use getDeviceCapability() or getDef
 
 #### ImageUtils
 
-includes method which converts the drawable to PixelMap.
+Includes method which converts the drawable to PixelMap.
 
 1. drawableToBitmap(Element) : Converts the input Element drawable to PixelMap.
 
 ####  ColorUtils
 
-includes some methods that calculate the darkness of color and determine opaque color which will be equivalent translucent color drawn on top of another color
+Includes some methods that calculate the darkness of color and determine opaque color which will be equivalent translucent color drawn on top of another color
 
 1. isColorDark(int) : Determine if a input color is dark or light. 
 
